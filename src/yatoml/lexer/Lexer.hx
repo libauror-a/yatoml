@@ -25,7 +25,6 @@ class Lexer {
     this.queue = new Array();
 
     this.content = content;
-    this.content.replace(Syntax.NEWLINE_CR + Syntax.NEWLINE_LF, Syntax.NEWLINE_LF);
 
     while(!is_eof()) {
       var pos = position();
@@ -110,7 +109,8 @@ class Lexer {
         column = 1;
 
         Newline;
-
+      case Syntax.NEWLINE_CR:
+      	null;
       case Syntax.COMMENT: 
         advance();
         

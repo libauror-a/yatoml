@@ -398,15 +398,18 @@ class Parser {
         advance();
         var arr = new Array();
         while(!is_eof()) {
+          skip_newline();
           arr.push(parse_value());
 
-          if(peek().token.equals(Operator(Comma))) 
+          if(peek().token.equals(Operator(Comma)))
             advance()
-          else
+          else {
+          	skip_newline();
             if(peek().token.equals(Operator(RightBracket))) {
               advance();
               break;
-            } else throw "missing comma ";
+            } else throw 'missing comma but got ${peek().token}';
+          }
         }
         arr;
 
