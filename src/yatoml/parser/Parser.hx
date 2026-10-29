@@ -408,7 +408,7 @@ class Parser {
             if(peek().token.equals(Operator(RightBracket))) {
               advance();
               break;
-            } else throw 'missing comma but got ${peek().token}';
+            } else throw 'missing comma';
           }
         }
         arr;
